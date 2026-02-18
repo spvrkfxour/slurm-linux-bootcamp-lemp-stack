@@ -106,6 +106,7 @@ sudo mv phpMyAdmin-5.2.3-all-languages pma
 # Создаем конфиг из шаблона
 sudo cp pma/config.sample.inc.php pma/config.inc.php
 # Генерируем blowfish_secret и вставляем в конфиг
+cd pma/
 openssl rand -base64 32
 sudo nano config.inc.php
 ```
@@ -158,7 +159,7 @@ server {
  deny all;
  location ~ \.php$ {
  include snippets/fastcgi-php.conf;
- fastcgi_pass unix:/run/php/php-fpm.sock;
+ fastcgi_pass unix:/run/php/php8.3-fpm.sock;
  fastcgi_param SCRIPT_FILENAME $request_filename;
  }
  }
